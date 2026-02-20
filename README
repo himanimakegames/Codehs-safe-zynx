@@ -1,0 +1,8 @@
+to add new game here is template 
+find this section <div class="game-container" id="games">
+
+add this
+
+<div class="game-card" onclick="loadGame('newgame.html')">
+    New Game Name
+</div>
