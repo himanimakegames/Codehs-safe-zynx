@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ZYNX CENTRAL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* Glowing Logo */
+        .logo {
+            font-size: 60px;
+            font-weight: bold;
+            margin-top: 30px;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px red; }
+            to { text-shadow: 0 0 25px crimson; }
+        }
+
+        /* Search Bar */
+        .search-bar {
+            margin: 30px;
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+            font-size: 16px;
+        }
+
+        /* Game Grid */
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .game-card {
+            background: #111;
+            padding: 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid #333;
+        }
+
+        .game-card:hover {
+            background: darkred;
+            transform: scale(1.05);
+        }
+
+        /* Loading Screen */
+        #loading {
+            display: none;
+            position: fixed;
+            background: black;
+            color: red;
+            font-size: 40px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="logo">ZYNX CENTRAL</div>
+
+<div class="search-bar">
+    <input type="text" id="search" placeholder="Search games..." onkeyup="searchGames()">
+</div>
+
+<div class="game-container" id="games">
+
+    <div class="game-card" onclick="loadGame('FNAE.html')">
+        FNAE
+    </div>
+
+    <div class="game-card" onclick="loadGame('game2.html')">
+        Game 2
+    </div>
+
+</div>
+
+<div id="loading">LOADING...</div>
+
+<script>
+function loadGame(page) {
+    document.getElementById("loading").style.display = "flex";
+
+    setTimeout(function() {
+        window.location.href = page;
+    }, 1500);
+}
+
+function searchGames() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let cards = document.getElementsByClassName("game-card");
+
+    for (let i = 0; i < cards.length; i++) {
+        let text = cards[i].innerText.toLowerCase();
+        cards[i].style.display = text.includes(input) ? "block" : "none";
+    }
+}
+</script>
+
+</body>
+</html>
